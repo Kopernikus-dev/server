@@ -116,6 +116,7 @@ fi
   echo "addnode=136.244.84.74:43013" >> encocoin.conf_TEMP
   echo "addnode=178.127.13.167:43013" >> encocoin.conf_TEMP
   echo "addnode=217.69.3.147:43013" >> encocoin.conf_TEMP
+  echo "addnode=95.179.177.82:43013" >> encocoin.conf_TEMP
   mv encocoin.conf_TEMP $CONF_DIR/encocoin.conf
   echo ""
   echo -e "Your ip is ${GREEN}$IP:$PORT${NC}"
