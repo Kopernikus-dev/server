@@ -1,5 +1,4 @@
 #!/bin/bash
-VERSION=v3.2.0
 PORT=43013
 RPCPORT=43014
 CONF_DIR=~/.encocoin
@@ -9,7 +8,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 if [[ $(lsb_release -d) = *18.04* ]]; then
-  COINZIP='https://github.com/Kopernikus-dev/xnk/releases/download/$VERSION/encocoin-$VERSION-ubuntu1804_daemon.zip'
+  COINZIP='https://github.com/Kopernikus-dev/xnk-testing/releases/download/v3.2.0/encocoin-v3.2.0-ubuntu1804.zip'
 fi
 
 if [[ $EUID -ne 0 ]]; then
@@ -85,9 +84,9 @@ then
   
   mkdir -p $CONF_DIR
 	cd $CONF_DIR
-  wget https://github.com/Kopernikus-dev/xnk/releases/download/$VERSION/Bootstrap-$VERSION.zip
-  unzip Bootstrap-$VERSION.zip
-  rm Bootstrap-$VERSION.zip
+  wget https://github.com/Kopernikus-dev/xnk-testing/releases/download/v3.2.0/Bootstrap-v3.2.0.zip
+  unzip Bootstrap-v3.2.0.zip
+  rm Bootstrap-v3.2.0.zip
 
   sudo echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$PORT${NC}"
   sudo ufw allow $PORT/tcp comment "$COIN_NAME MN port" >/dev/null
@@ -116,6 +115,7 @@ fi
   echo "addnode=199.247.28.71:43013" >> encocoin.conf_TEMP
   echo "addnode=136.244.84.74:43013" >> encocoin.conf_TEMP
   echo "addnode=178.127.13.167:43013" >> encocoin.conf_TEMP
+  echo "addnode=217.69.3.147:43013" >> encocoin.conf_TEMP
   mv encocoin.conf_TEMP $CONF_DIR/encocoin.conf
   echo ""
   echo -e "Your ip is ${GREEN}$IP:$PORT${NC}"
@@ -128,9 +128,9 @@ echo "Commands:"
 echo -e "Start Encocoin Service: ${GREEN}systemctl start encocoin${NC}"
 echo -e "Check Encocoin Status Service: ${GREEN}systemctl status encocoin${NC}"
 echo -e "Stop Encocoin Service: ${GREEN}systemctl stop encocoin${NC}"
-echo -e "Check Masternode Status: ${GREEN}encocoin-cli getmasternodestatus${NC}"
+echo -e "Check Masternode Status: ${GREEN}encocoin-cli getinfo${NC}"
 
 echo ""
-echo -e "${GREEN}Encocoin Masternode Installation Done${NC}"
+echo -e "${GREEN}Encocoin Server Installation Done${NC}"
 exec bash
 exit
